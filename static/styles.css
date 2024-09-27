@@ -1,0 +1,56 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* 
+form {
+  border-radius: 15px;
+  border: 1px solid burlywood;
+  padding: 10px;
+  width: 25%;
+}
+
+input, button {
+  border: none;
+  outline: none;
+  background-color: burlywood;
+  font-size: 16px;
+  color: white;
+  padding: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 10px auto;
+  display: block;
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+  text-align: center;
+  margin: 1px auto;
+  width: 100%;
+}
+
+input[type=submit]:hover, input[type=submit]:focus {
+  background-color: brown;
+}
+
+form div {
+  color: red;
+  margin-left: 5px;
+} */
