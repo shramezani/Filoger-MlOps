@@ -11,7 +11,20 @@
   {% block head %}{% endblock %}
 </head>
 <body>
-  {% block content %}{% endblock %}
-  {% block script %}{% endblock %}
+  <header>
+    <nav>
+      <h1>CancerAI</h1>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="">Cancer Recognition</a></li>
+        <li><a href="">History</a></li>
+        <li><a href="">Log in/Register</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+    {% block script %}{% endblock %}
+  </main>
 </body>
 </html>
