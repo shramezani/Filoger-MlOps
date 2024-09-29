@@ -1,2 +1,4 @@
-
+.ipynb_checkpoints
+.ipynb_checkpoints/*
+ ml/notebook.ipynb
 __pycache__

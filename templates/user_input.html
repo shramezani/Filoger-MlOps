@@ -1,4 +1,43 @@
 {% extends 'base.html' %}
+{% block title %} 
+  Brest Cancer Prediction
+{% endblock %} 
 {% block content %}
-  <h2>User Input</h2>
+  <h1>Breast Cancer Prediction</h1>
+      
+  <form method="POST">
+      {{ form.hidden_tag() }}
+      <p>
+          {{ form.worst_area.label }}<br>
+          {{ form.worst_area(size=20) }}<br>
+          <small>Example: 2019.0</small>
+      </p>
+      <p>
+          {{ form.worst_concave_points.label }}<br>
+          {{ form.worst_concave_points(size=20) }}<br>
+          <small>Example: 0.2654</small>
+      </p>
+      <p>
+          {{ form.mean_concave_points.label }}<br>
+          {{ form.mean_concave_points(size=20) }}<br>
+          <small>Example: 0.14710</small>
+      </p>
+      <p>
+          {{ form.worst_radius.label }}<br>
+          {{ form.worst_radius(size=20) }}<br>
+          <small>Example: 25.380</small>
+      </p>
+      <p>
+          {{ form.mean_concavity.label }}<br>
+          {{ form.mean_concavity(size=20) }}<br>
+          <small>Example: 0.30010</small>
+      </p>
+      <p>
+          {{ form.submit() }}
+      </p>
+  </form>
+
+  {% if prediction is not None %}
+      <h2>Prediction Result: {{ prediction }}</h2>
+  {% endif %}
 {% endblock %}
