@@ -1,106 +1,77 @@
-from flask import Flask, request, render_template, redirect, session
-import sqlite3
+from flask import Flask, render_template, redirect, url_for, session, request
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 import os
 
 app = Flask(__name__)
-
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SECRET_KEY'] = os.urandom(24)
+db = SQLAlchemy(app)
 @app.route('/')
 def index():
     return redirect('/login')  # هدایت کاربر به صفحه ورود
 
+# مدل کاربر
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), nullable=False, unique=True)
+    email = db.Column(db.String(150), nullable=False, unique=True)
+    password = db.Column(db.String(150), nullable=False)
 
-# تابع ایجاد پایگاه‌داده SQLite
-def create_db():
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
+# ایجاد پایگاه‌داده
+with app.app_context():
+    db.create_all()
 
-    # ایجاد جدول کاربران
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT UNIQUE,
-        password TEXT,
-        email TEXT
-    )
-    ''')
+# مسیر ثبت‌نام
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
 
-    # ایجاد جدول پیش‌بینی‌ها
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS predictions (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER,
-        input_data TEXT,
-        prediction_result TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY(user_id) REFERENCES users(id)
-    )
-    ''')
+        # هش کردن رمز عبور
+        hashed_password = generate_password_hash(password, method='sha256')
 
-    conn.commit()
-    conn.close()
+        # ذخیره کاربر در پایگاه‌داده
+        new_user = User(username=username, email=email, password=hashed_password)
+        db.session.add(new_user)
+        db.session.commit()
 
+        return redirect(url_for('login'))
 
-# اجرای تابع ایجاد پایگاه داده در زمان شروع برنامه
-create_db()
-
+    return render_template('register.html')
 
 # مسیر ورود به سیستم
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
+        email = request.form['email']
         password = request.form['password']
 
-        conn = sqlite3.connect('database.db')
-        cursor = conn.cursor()
-        cursor.execute('SELECT * FROM users WHERE username=? AND password=?', (username, password))
-        user = cursor.fetchone()
-        conn.close()
+        user = User.query.filter_by(email=email).first()
 
-        if user:
-            session['user_id'] = user[0]
-            return redirect('/history')
+        if user and check_password_hash(user.password, password):
+            session['user_id'] = user.id
+            return redirect(url_for('home'))
         else:
-            return 'نام کاربری یا رمز عبور اشتباه است'
+            return 'Invalid email or password'
 
     return render_template('login.html')
 
+# مسیر صفحه اصلی (پس از ورود)
+@app.route('/home')
+def home():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
 
-# مسیر ارسال داده‌ها و پیش‌بینی
-@app.route('/submit', methods=['GET', 'POST'])
-def submit_prediction():
-    if request.method == 'POST':
-        input_data = request.form['input_data']
-        prediction_result = "Positive"  # فرضی برای مثال
+    return render_template('home.html')
 
-        conn = sqlite3.connect('database.db')
-        cursor = conn.cursor()
-        cursor.execute('INSERT INTO predictions (user_id, input_data, prediction_result) VALUES (?, ?, ?)',
-                       (session['user_id'], input_data, prediction_result))
-        conn.commit()
-        conn.close()
-
-        return 'پیش‌بینی ثبت شد'
-
-    return render_template('submit.html')
-
-
-# مسیر نمایش تاریخچه پیش‌بینی‌ها
-@app.route('/history')
-def history():
-    user_id = session.get('user_id')
-
-    if not user_id:
-        return redirect('/login')
-
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT input_data, prediction_result, created_at FROM predictions WHERE user_id=?', (user_id,))
-    predictions = cursor.fetchall()
-    conn.close()
-
-    return render_template('history.html', predictions=predictions)
-
+# خروج از سیستم
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
