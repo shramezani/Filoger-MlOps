@@ -1,0 +1,118 @@
+/* awesome_login/css/styles.css */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    background: linear-gradient(135deg, #f0f2f5 0%, #cfd9df 100%);
+}
+
+/* Card Shadow and Border */
+.card {
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 15px;
+}
+
+/* Input Group Styling */
+.input-group-text {
+    background-color: #ffffff;
+    border: none;
+}
+
+.form-control {
+    border-radius: 50px;
+    box-shadow: none;
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: none;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    transition: transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-outline-dark {
+    border-radius: 50px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-dark:hover {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+/* Checkbox Styling */
+.form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Responsive Image */
+.bg-primary img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Heading Styling */
+h2 {
+    font-weight: 700;
+    color: #333333;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+/* Link Styling */
+a {
+    color: #007bff;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+/* Social Buttons */
+.btn-outline-dark i {
+    margin-right: 8px;
+}
+
+.btn-google {
+    background-color: #db4437;
+    color: #ffffff;
+}
+
+.btn-google:hover {
+    background-color: #a33224;
+}
+
+/* Facebook Button */
+.btn-facebook {
+    background-color: #3b5998;
+    color: #ffffff;
+}
+
+.btn-facebook:hover {
+    background-color: #2d4373;
+}

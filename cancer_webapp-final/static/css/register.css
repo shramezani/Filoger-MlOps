@@ -1,0 +1,129 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    /* background-color: #f0f2f5;*/
+    background: linear-gradient(135deg, #4185ba 0%, #72abce 95%);
+
+}
+
+
+
+
+#animationContainer {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 500px; /* Adjust the size as needed */
+    height: 500px; /* Adjust the size as needed */
+    /* Optional: Add a higher z-index if needed */
+    z-index: 1;
+}
+
+
+
+
+/* Card Shadow and Border */
+.card {
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 15px;
+}
+
+/* Input Group Styling */
+.input-group-text {
+    background-color: #ffffff;
+    border: none;
+}
+
+/* Form Control Styling */
+.form-control {
+    border-radius: 50px;
+    box-shadow: none;
+    border: 1px solid #ced4da;
+}
+
+/* Form Control Focus Styling */
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: none;
+}
+
+/* Button Styling */
+.btn-success {
+    background-color: #28a745;
+    border: none;
+    border-radius: 50px;
+    padding: 10px;
+    transition: background-color 0.3s ease, transform 0.2s;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.btn-outline-dark {
+    border-radius: 50px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s;
+}
+
+.btn-outline-dark:hover {
+    background-color: #343a40;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* Checkbox Styling */
+.form-check-input:checked {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* Responsive Image */
+.bg-success img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Heading Styling */
+h2 {
+    font-weight: 700;
+    color: #333333;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+/* Link Styling */
+a {
+    color: #026619;
+}
+
+a:hover {
+    color: #1b3721;
+    text-decoration: none;
+}
+
+/* Social Buttons Icons */
+.btn-outline-dark i {
+    margin-right: 8px;
+}
+
+/* Password Help Text Styling */
+.form-text {
+    font-size: 0.875em;
+    color: #131414;
+}
+
+.btn btn-link{
+    color: #8d4705;
+    font-size: 0.875em;
+}
