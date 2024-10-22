@@ -1,0 +1,97 @@
+{% extends 'base.html' %} {% block title %} Home Page {%
+endblock %} {% block head %}
+<!-- Font Awesome for Icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+<!-- Stylesheet -->
+<link rel="stylesheet" href="/static/css/home.css" />
+{% endblock %} {% block content %}
+<!-- Header -->
+<div class="header">
+  <h1>Welcome to Your Profile</h1>
+  <p>
+    Manage your cancer detection and history efficiently
+  </p>
+</div>
+
+<!-- Main Container -->
+<div class="container">
+  <!-- Left Section with Lottie Animation -->
+  <div class="left-section">
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
+    <dotlottie-player
+      src="https://lottie.host/c503aad1-cb9c-4695-9199-2935b162e0c0/DyEwcCb4kH.json"
+      background="#FF6699"
+      speed="0.5"
+      style="width: 500px; height: 500px"
+      direction="1"
+      playMode="normal"
+      loop
+      autoplay
+    ></dotlottie-player>
+  </div>
+
+  <!-- Right Section with User Info and Menu -->
+  <div class="right-section">
+    <!-- User Information -->
+    <div class="user-info">
+      <div>
+        <script src="https://cdn.logwork.com/widget/clock.js"></script>
+        <a
+          href="https://logwork.com/current-time-in-tehran-iran"
+          class="clock-time"
+          data-style="default-numeral"
+          data-size="125"
+          data-timezone="Asia/Tehran"
+          >Iran</a
+        >
+      </div>
+      <div>
+        <span>John Doe</span>
+        <small>johndoe@example.com</small>
+      </div>
+    </div>
+
+    <!-- Menu -->
+    <ul class="menu">
+      <li>
+        <a href="{{url_for('user_input')}}"
+          ><i class="fas fa-upload"></i> Input</a
+        >
+      </li>
+      <li>
+        <a href="{{url_for('history')}}"
+          ><i class="fas fa-history"></i> History</a
+        >
+      </li>
+      <li>
+        <a href="{{url_for('logout')}}"
+          ><i class="fas fa-sign-out-alt"></i> Logout</a
+        >
+      </li>
+    </ul>
+
+    <!-- Call-to-Action Button -->
+    <div class="cta-button">
+      <button onclick="location.href='#'">
+        Start Detection
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  &copy; 2024 Your Company. All rights reserved.
+  <div>
+    <a href="#">Privacy Policy</a> |
+    <a href="#">Terms of Service</a> |
+    <a href="#">Contact Us</a>
+  </div>
+</div>
+{% endblock %}
