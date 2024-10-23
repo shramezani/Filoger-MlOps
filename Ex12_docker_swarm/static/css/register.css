@@ -14,7 +14,7 @@ body {
 
 #animationContainer {
     position: absolute;
-    top: 25%;
+    top: 40%;
     left: 25%;
     transform: translate(-50%, -50%);
     width: 500px; /* Adjust the size as needed */
