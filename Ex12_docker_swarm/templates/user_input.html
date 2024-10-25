@@ -1,10 +1,17 @@
-{% extends 'base.html' %} {% block title %} Breast Cancer
-Prediction {% endblock %} {% block head %}
+{% extends 'base.html' %} 
+
+{% block title %} 
+  Breast Cancer Prediction 
+{% endblock %} 
+
+{% block head %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/user_input.css') }}"
 />
-{% endblock %} {% block content %}
+{% endblock %} 
+
+{% block content %}
 <div class="container">
   <h1>Breast Cancer Prediction</h1>
   <div class="form-box">
@@ -48,5 +55,5 @@ Prediction {% endblock %} {% block head %}
       </div>
     </form>
   </div>
-  {% endblock %}
+{% endblock %}
 </div>

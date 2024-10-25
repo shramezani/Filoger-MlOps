@@ -1,19 +1,28 @@
-{% extends 'base.html' %} {% block title %} Profile {%
-endblock %} {% block head %}
+{% extends 'base.html' %} 
+{% block title %} 
+  Profile 
+{%endblock %} 
+
+{% block head %}
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/static/css/profile.css" />
-{% endblock %} {% block content %}
+{% endblock %} 
+
+{% block content %}
 <div class="container">
   <h2>Profile and Prediction History</h2>
 
-  {% with messages =
-  get_flashed_messages(with_categories=true) %} {% if
-  messages %} {% for category, message in messages %}
-  <div class="alert alert-{{ category }}">
-    {{ message }}
-  </div>
-  {% endfor %} {% endif %} {% endwith %} {% if predictions
-  %}
+  {% with messages = get_flashed_messages(with_categories=true) %} 
+    {% if messages %} 
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          {{ message }}
+        </div>
+      {% endfor %} 
+    {% endif %} 
+  {% endwith %} 
+  
+  {% if predictions%}
   <table class="table table-striped">
     <thead>
       <tr>
@@ -41,13 +50,13 @@ endblock %} {% block head %}
         <td>{{ prediction.mean_concavity }}</td>
         <td>
           {% if prediction.cancer_type == 'Malignant' %}
-          <span class="badge badge-danger"
-            >{{ prediction.cancer_type }}</span
-          >
+          <span class="badge badge-danger">
+            {{ prediction.cancer_type }}
+          </span>
           {% else %}
-          <span class="badge badge-success"
-            >{{ prediction.cancer_type }}</span
-          >
+          <span class="badge badge-success">
+            {{ prediction.cancer_type }}
+          </span>
           {% endif %}
         </td>
         <td>{{ prediction.explanation }}</td>
@@ -61,8 +70,8 @@ endblock %} {% block head %}
 
   <!-- Add a button to navigate back to the profile or input page -->
   <div class="button-container">
-    <a href="{{ url_for('profile') }}" class="btn"
-      >Back to Profile</a
+    <a href="{{ url_for('home') }}" class="btn"
+      >Back to Home</a
     >
   </div>
 </div>

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
-from register import RegisterForm , PredictionForm
+from forms import RegisterForm , PredictionForm
 
 app = Flask(__name__)
 
@@ -24,7 +24,7 @@ def login():
 def register():
   form = RegisterForm()
   if request.method == 'POST':
-    return redirect(url_for('login'))
+    return redirect(url_for('profile'))
   else:
     return render_template('register.html', form = form)
   
@@ -38,10 +38,11 @@ def forgot_password():
   
 @app.route('/user_input', methods=['GET', 'POST'])
 def user_input():
+  form = PredictionForm()
   if request.method == 'POST':
     return redirect(url_for('result'))
   else:
-    return render_template('user_input.html')
+    return render_template('user_input.html', form = form)
   
 @app.route('/result')
 def result():
