@@ -116,13 +116,9 @@ Page {% endblock %} {% block head %}
           we can support your healthcare needs.
         </p>
         <p class="container d-flex justify-content-center">
+          
           <a
-            href="{{ url_for('register') }}"
-            class="btn btn-primary mx-2"
-            >Sign Up Now</a
-          >
-          <a
-            href="{{ url_for('user_input') }}"
+            href="{{url_for('user_input') }}"
             class="btn btn-outline-secondary mx-2"
             >Get Started with Detection</a
           >

@@ -101,54 +101,6 @@ endblock %} {% block head %}
               {% endif %}
             </div>
           </div>
-
-          <!-- Email Verification Code Field -->
-          <div class="mb-3">
-            <label
-              for="verification_code"
-              class="form-label"
-              >Email Verification Code</label
-            >
-            <div class="input-group">
-              <span
-                class="input-group-text"
-                id="verification-code-addon"
-              >
-                <i class="bi bi-key"></i>
-              </span>
-              <input
-                type="text"
-                class="form-control"
-                id="verification_code"
-                name="verification_code"
-                placeholder="Enter verification code"
-                aria-label="Verification Code"
-                aria-describedby="verification-code-addon"
-                required
-              />
-              <div class="invalid-feedback">
-                Please enter the verification code sent to
-                your email.
-              </div>
-            </div>
-            <div class="mt-2">
-              <button
-                type="button"
-                id="sendEmailCode"
-                class="btn btn-primary"
-              >
-                Send Verification Code
-              </button>
-              <button
-                type="button"
-                id="resendCode"
-                class="btn btn-link"
-              >
-                Resend Code
-              </button>
-            </div>
-          </div>
-
           <!-- Password Field -->
           <div class="mb-3">
             {{ form.password.label(class="form-label") }}
