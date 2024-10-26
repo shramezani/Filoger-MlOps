@@ -3,24 +3,43 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Boolean, Float, Integer, String
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SECRET_KEY'] = os.urandom(24)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///real_estate.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-@app.route('/')
-def index():
-    return redirect('/login')  # هدایت کاربر به صفحه ورود
 
-# مدل کاربر
+# Define User model
 class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(150), nullable=False, unique=True)
-    email = db.Column(db.String(150), nullable=False, unique=True)
-    password = db.Column(db.String(150), nullable=False)
+    id = db.Column(Integer, primary_key=True)
+    username = db.Column(String(80), nullable=False, unique=True)
+    email = db.Column(String(120), nullable=False, unique=True)
+    password = db.Column(String(120), nullable=False)
 
-# ایجاد پایگاه‌داده
+# Define Prediction History model
+class PredictionHistory(db.Model):
+    id = db.Column(Integer, primary_key=True)
+    user_id = db.Column(Integer, db.ForeignKey('user.id'), nullable=False)
+    area = db.Column(Float, nullable=False)
+    rooms = db.Column(Integer, nullable=False)
+    parking = db.Column(Boolean, nullable=False)
+    warehouse = db.Column(Boolean, nullable=False)
+    elevator = db.Column(Boolean, nullable=False)
+    address = db.Column(String(255), nullable=False)
+    price = db.Column(Float)
+
+    # Relationship to connect user and prediction history
+    user = db.relationship('User', backref=db.backref('predictions', lazy=True))
+
+# Initialize the database and create tables
 with app.app_context():
     db.create_all()
+
+print("Database and tables created successfully!")
+
 
 # مسیر ثبت‌نام
 @app.route('/register', methods=['GET', 'POST'])
