@@ -36,6 +36,7 @@ footer {
 .text-justify {
   text-align: justify;
 }
+.error { color: red; }
 /* 
 
 
