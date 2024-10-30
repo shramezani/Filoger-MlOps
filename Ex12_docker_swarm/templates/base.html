@@ -41,14 +41,20 @@
             <li class="nav-item mx-2">
               <a class="nav-link" href="{{url_for('profile')}}">Profile</a>
             </li>
-            <li class="nav-item mx-2">
-              <a class="btn btn-outline-secondary mx-2" href="{{url_for('register')}}">Register</a>
-              <!-- Login | Register should change based on login status -->
-            </li>
-            <li class="nav-item mx-2">
-              <a class="btn btn-outline-secondary mx-2" href="{{url_for('login')}}">Login</a>
-              <!-- Login | Register should change based on login status -->
-            </li>
+            {% if session.get('user_id') %}
+              <li class="nav-item mx-2">
+                <a class="btn btn-outline-secondary mx-2" href="{{url_for('logout')}}">Logout</a>
+              </li>
+
+            {% else %}
+              <li class="nav-item mx-2">
+                <a class="btn btn-outline-secondary mx-2" href="{{url_for('register')}}">Register</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="btn btn-outline-secondary mx-2" href="{{url_for('login')}}">Login</a>
+              </li>
+            {% endif %}
+
           </ul>
         </div>
       </nav>

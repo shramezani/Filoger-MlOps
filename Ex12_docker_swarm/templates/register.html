@@ -1,5 +1,9 @@
-{% extends 'base.html' %} {% block title %} Register {%
-endblock %} {% block head %}
+{% extends 'base.html' %}
+{% block title %}
+  Register
+{% endblock %}
+
+{% block head %}
 <!-- Bootstrap Icons -->
 <link
   rel="stylesheet"
@@ -7,7 +11,9 @@ endblock %} {% block head %}
 />
 <!-- Custom CSS -->
 <link rel="stylesheet" href="{{url_for('static', filename='css/register.css')}}" />
-{% endblock %} {% block content %}
+{% endblock %}
+
+{% block content %}
 <div class="container-fluid">
   <div class="row vh-100">
     <!-- Left Side - Animation Section (Visible on larger screens) -->
@@ -68,13 +74,17 @@ endblock %} {% block head %}
               >
                 <i class="bi bi-person-fill"></i>
               </span>
-              {{ form.username( class="form-control",
-              id="username", aria_label="Username",
-              aria_describedby="username-addon" ) }} {% if
-              form.username.errors %}
-              <div class="invalid-feedback">
-                {{ form.username.errors[0] }}
-              </div>
+              {{ form.username(
+                class="form-control",
+                id="username",
+                aria_label="Username",
+                aria_describedby="username-addon"
+                )
+              }}
+              {% if form.username.errors %}
+                <div class="invalid-feedback">
+                  {{ form.username.errors[0] }}
+                </div>
               {% endif %}
             </div>
           </div>
@@ -89,15 +99,20 @@ endblock %} {% block head %}
               >
                 <i class="bi bi-envelope-fill"></i>
               </span>
-              {{ form.email( type="email",
-              class="form-control", id="email",
-              placeholder="Enter your email",
-              aria_label="Email",
-              aria_describedby="email-addon", required=True
-              ) }} {% if form.email.errors %}
-              <div class="invalid-feedback">
-                {{ form.email.errors[0] }}
-              </div>
+              {{ form.email(
+                type="email",
+                class="form-control",
+                id="email",
+                placeholder="Enter your email",
+                aria_label="Email",
+                aria_describedby="email-addon",
+                required=True
+                )
+              }}
+              {% if form.email.errors %}
+                <div class="invalid-feedback">
+                  {{ form.email.errors[0] }}
+                </div>
               {% endif %}
             </div>
           </div>
@@ -111,11 +126,15 @@ endblock %} {% block head %}
               >
                 <i class="bi bi-lock-fill"></i>
               </span>
-              {{ form.password( class="form-control",
-              id="password", placeholder="Create a
-              password", aria_label="Password",
-              aria_describedby="password-addon",
-              required=True ) }}
+              {{ form.password(
+                class="form-control",
+                id="password",
+                placeholder="Create a password",
+                aria_label="Password",
+                aria_describedby="password-addon",
+                required=True
+                )
+              }}
               <button
                 class="btn btn-outline-secondary"
                 type="button"
@@ -124,9 +143,9 @@ endblock %} {% block head %}
                 <i class="bi bi-eye"></i>
               </button>
               {% if form.password.errors %}
-              <div class="invalid-feedback">
-                {{ form.password.errors[0] }}
-              </div>
+                <div class="invalid-feedback">
+                  {{ form.password.errors[0] }}
+                </div>
               {% endif %}
             </div>
             <div id="passwordHelp" class="form-text">
@@ -153,9 +172,7 @@ endblock %} {% block head %}
 
           <!-- Confirm Password Field -->
           <div class="mb-3">
-            {{
-            form.confirm_password.label(class="form-label")
-            }}
+            {{form.confirm_password.label(class="form-label")}}
             <div class="input-group">
               <span
                 class="input-group-text"
@@ -164,11 +181,14 @@ endblock %} {% block head %}
                 <i class="bi bi-lock-fill"></i>
               </span>
               {{ form.confirm_password(
-              class="form-control", id="confirm_password",
-              placeholder="Confirm your password",
-              aria_label="Confirm Password",
-              aria_describedby="confirm-password-addon",
-              required=True ) }}
+                  class="form-control",
+                  id="confirm_password",
+                  placeholder="Confirm your password",
+                  aria_label="Confirm Password",
+                  aria_describedby="confirm-password-addon",
+                  required=True
+                )
+              }}
               <button
                 class="btn btn-outline-secondary"
                 type="button"
@@ -177,9 +197,9 @@ endblock %} {% block head %}
                 <i class="bi bi-eye"></i>
               </button>
               {% if form.confirm_password.errors %}
-              <div class="invalid-feedback">
-                {{ form.confirm_password.errors[0] }}
-              </div>
+                <div class="invalid-feedback">
+                  {{ form.confirm_password.errors[0] }}
+                </div>
               {% endif %}
             </div>
             <small
