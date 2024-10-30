@@ -1,8 +1,8 @@
-from flask import Flask, render_template, redirect, url_for, request, flash, session
+from flask import flash, Flask, redirect, render_template, request, session, url_for
 
 
 from forms import RegisterForm, LoginForm, PredictionForm
-from models import db, User
+from models import db, User, PredictionHistory
 from utils import login_required
 
 app = Flask(__name__)
@@ -21,7 +21,9 @@ def home():
 @app.route("/profile")
 @login_required
 def profile():
-    return render_template("profile.html")
+    user_id = session["user_id"]
+    predictions = PredictionHistory.query.filter_by(user_id=user_id).all()
+    return render_template("profile.html", predictions=predictions)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -80,8 +82,47 @@ def forgot_password():
 @login_required
 def user_input():
     form = PredictionForm()
-    if request.method == "POST":
-        return redirect(url_for("result"))
+    if form.validate_on_submit():
+        user_id = session["user_id"]
+        area = form.area.data
+        rooms = form.rooms.data
+        parking = form.parking.data
+        warehouse = form.warehouse.data
+        elevator = form.elevator.data
+        address = form.address.data
+
+        if form.area.data <= 0:
+            form.area.errors.append("Area must be a positive value.")
+            return render_template("user_input.html", form=form)
+
+        if form.rooms.data < 1:
+            form.rooms.errors.append("Number of rooms must be at least 1.")
+            return render_template("user_input.html", form=form)
+
+        try:
+            # load ml model and predict
+            predicted_price = float(area * 1000 + rooms * 50000)
+            explanation = "any explanation goes here"
+        except Exception:
+            flash("Prediction error", "danger")
+            return render_template("user_input.html", form=form)
+
+        prediction = PredictionHistory(
+            user_id=user_id,
+            area=area,
+            rooms=rooms,
+            parking=parking,
+            warehouse=warehouse,
+            elevator=elevator,
+            address=address,
+            predicted_price=predicted_price,
+        )
+        db.session.add(prediction)
+        db.session.commit()
+
+        return render_template(
+            "result.html", predicted_price=predicted_price, explanation=explanation
+        )
     else:
         return render_template("user_input.html", form=form)
 

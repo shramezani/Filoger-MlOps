@@ -1,18 +1,20 @@
 from flask_wtf import FlaskForm
 from wtforms import (
-    StringField,
+    BooleanField,
+    DecimalField,
     EmailField,
+    IntegerField,
     PasswordField,
+    StringField,
     SubmitField,
-    FloatField
 )
 from wtforms.validators import (
-    InputRequired,
     DataRequired,
     Email,
+    EqualTo,
+    InputRequired,
     Length,
     Regexp,
-    EqualTo,
 )
 
 
@@ -55,17 +57,10 @@ class LoginForm(FlaskForm):
 
 
 class PredictionForm(FlaskForm):
-    worst_area = FloatField("Worst Area", default=2019.0, validators=[DataRequired()])
-    worst_concave_points = FloatField(
-        "Worst Concave Points", default=0.2654, validators=[DataRequired()]
-    )
-    mean_concave_points = FloatField(
-        "Mean Concave Points", default=0.14710, validators=[DataRequired()]
-    )
-    worst_radius = FloatField(
-        "Worst Radius", default=25.380, validators=[DataRequired()]
-    )
-    mean_concavity = FloatField(
-        "Mean Concavity", default=0.30010, validators=[DataRequired()]
-    )
-    submit = SubmitField("Predict")
+    area = DecimalField("Area (Square meters)", validators=[InputRequired()])
+    rooms = IntegerField("Number of Rooms", validators=[InputRequired()])
+    parking = BooleanField("Has Parking")
+    warehouse = BooleanField("Has Warehouse")
+    elevator = BooleanField("Has Elevator")
+    address = StringField("Address", validators=[InputRequired()])
+    submit = SubmitField("Submit")
