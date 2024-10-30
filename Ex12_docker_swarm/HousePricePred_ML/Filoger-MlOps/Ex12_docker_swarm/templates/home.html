@@ -1,0 +1,130 @@
+{% extends 'base.html' %} {% block title %} CancerAI - Home
+Page {% endblock %} {% block head %}
+<!-- Font Awesome for Icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+<!-- Stylesheet -->
+<link rel="stylesheet" href="/static/css/home.css" />
+{% endblock %} {% block content %}
+<section class="py-5">
+  <div class="container">
+    <h2>Welcome to CancerAI</h2>
+    <p class="lead text-justify mb-4">
+      CancerAI leverages the power of artificial
+      intelligence to assist in early cancer detection,
+      providing a powerful tool to help healthcare
+      professionals in diagnosing cancer. By analyzing
+      medical imaging and clinical data, our AI algorithms
+      deliver insights that can improve the accuracy of
+      cancer detection and support medical decisions.
+    </p>
+    <section class="py-5 bg-light">
+      <div class="container px-5">
+        <h3>Why Choose CancerAI?</h3>
+        <p class="lead text-justify">
+          CancerAI provides cutting-edge technology designed
+          to improve cancer detection accuracy and support
+          medical professionals in making informed
+          decisions. Our platform uses advanced artificial
+          intelligence algorithms to analyze medical images,
+          clinical data, and patient history for early
+          detection and precise diagnoses.
+        </p>
+
+        <div class="row py-4">
+          <div class="col-md-4">
+            <h5>AI-Powered Detection</h5>
+            <p class="text-justify pr-2">
+              Leveraging the power of deep learning and AI,
+              CancerAI analyzes thousands of images and data
+              points in seconds, helping to detect early
+              signs of cancer with unparalleled precision.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h5>Accurate and Reliable</h5>
+            <p class="text-justify pr-2">
+              Our AI models are trained on extensive
+              datasets, making them highly accurate and
+              dependable in detecting various forms of
+              cancer such as breast, lung, skin, and more.
+              You can trust CancerAI for consistent results.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h5>Enhancing Healthcare</h5>
+            <p class="text-justify pr-2">
+              CancerAI serves as a companion tool for
+              healthcare professionals, enhancing their
+              ability to diagnose and monitor patients,
+              ultimately improving outcomes and saving
+              lives.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-5">
+      <div class="container">
+        <h3>How CancerAI Works</h3>
+        <p class="lead text-justify">
+          Our platform uses advanced AI models to process
+          medical imaging data and provide comprehensive
+          analysis. Here's how it works:
+        </p>
+
+        <ol class="list-group list-group-numbered">
+          <li class="list-group-item py-2">
+            <strong>Upload Medical Images:</strong> Users
+            (doctors or healthcare facilities) upload
+            X-rays, MRIs, or other medical imaging to our
+            secure platform.
+          </li>
+          <li class="list-group-item d-block py-3">
+            <strong>AI Analysis:</strong> The AI model
+            analyzes the uploaded images, looking for
+            potential abnormalities or early signs of cancer
+            that may be hard to detect with the naked eye.
+          </li>
+          <li class="list-group-item d-block py-3">
+            <strong>Report Generation:</strong> Within
+            minutes, CancerAI generates a detailed report
+            highlighting potential areas of concern, with a
+            confidence score indicating the likelihood of
+            cancer presence.
+          </li>
+          <li class="list-group-item d-block py-3">
+            <strong>Expert Review:</strong> Doctors can
+            review the AI-generated report alongside their
+            clinical expertise for a more informed diagnosis
+            and treatment plan.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <h3>Get Started with CancerAI</h3>
+        <p class="lead">
+          Ready to see how CancerAI can improve cancer
+          detection and diagnosis? Sign up today to explore
+          our platform or contact us to learn more about how
+          we can support your healthcare needs.
+        </p>
+        <p class="container d-flex justify-content-center">
+          
+          <a
+            href="{{url_for('user_input') }}"
+            class="btn btn-outline-secondary mx-2"
+            >Get Started with Detection</a
+          >
+        </p>
+      </div>
+    </section>
+  </div>
+</section>
+{% endblock %}

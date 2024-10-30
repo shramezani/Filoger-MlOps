@@ -1,0 +1,78 @@
+{% extends 'base.html' %} 
+{% block title %} 
+  Profile 
+{%endblock %} 
+
+{% block head %}
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/static/css/profile.css" />
+{% endblock %} 
+
+{% block content %}
+<div class="container">
+  <h2>Profile and Prediction History</h2>
+
+  {% with messages = get_flashed_messages(with_categories=true) %} 
+    {% if messages %} 
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          {{ message }}
+        </div>
+      {% endfor %} 
+    {% endif %} 
+  {% endwith %} 
+  
+  {% if predictions%}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date & Time</th>
+        <th>Worst Area</th>
+        <th>Worst Concave Points</th>
+        <th>Mean Concave Points</th>
+        <th>Worst Radius</th>
+        <th>Mean Concavity</th>
+        <th>Result</th>
+        <th>Explanation</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for prediction in predictions %}
+      <tr>
+        <td>
+          {{ prediction.timestamp.strftime('%Y-%m-%d
+          %H:%M:%S') }}
+        </td>
+        <td>{{ prediction.worst_area }}</td>
+        <td>{{ prediction.worst_concave_points }}</td>
+        <td>{{ prediction.mean_concave_points }}</td>
+        <td>{{ prediction.worst_radius }}</td>
+        <td>{{ prediction.mean_concavity }}</td>
+        <td>
+          {% if prediction.cancer_type == 'Malignant' %}
+          <span class="badge badge-danger">
+            {{ prediction.cancer_type }}
+          </span>
+          {% else %}
+          <span class="badge badge-success">
+            {{ prediction.cancer_type }}
+          </span>
+          {% endif %}
+        </td>
+        <td>{{ prediction.explanation }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>You have no prediction history yet.</p>
+  {% endif %}
+
+  <!-- Add a button to navigate back to the profile or input page -->
+  <div class="button-container">
+    <a href="{{ url_for('home') }}" class="btn"
+      >Back to Home</a
+    >
+  </div>
+</div>
+{% endblock %}
