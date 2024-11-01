@@ -132,6 +132,13 @@ def user_input():
 def result():
     return render_template("result.html")
 
+@app.errorhandler(Exception)
+def handle_error(e):
+    # Get the error code; use 500 if not found
+    error_code = getattr(e, "code", 500)
+    error_message = str(e)
+    return render_template("error.html", error_code=error_code, error_message=error_message), error_code
+
 
 if __name__ == "__main__":
     app.run(debug=True)

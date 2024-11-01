@@ -1,64 +1,92 @@
-{% extends 'base.html' %}
-
-{% block title %}
-  Breast Cancer Prediction
-{% endblock %}
-
-{% block head %}
+{% extends 'base.html' %} {% block title %} Home Price
+Estimation - AI Powered {% endblock %} {% block head %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/user_input.css') }}"
 />
-{% endblock %}
+{% endblock %} {% block content %}
+<div class="container my-5">
+  <h2 class="text-center mb-4">
+    Enter Property Details for Price Estimation
+  </h2>
 
-{% block content %}
-<div class="container">
-  <h1>Breast Cancer Prediction</h1>
-  <div class="form-box">
-    <form
-      method="POST"
-      action="{{ url_for('user_input') }}"
-    >
-      {{ form.hidden_tag() }}
-      <div class="form-group">
-        <label>{{ form.area.label }}</label>
-        {{ form.area(size=20, class_='form-control')}}
-        <small>Example: ???</small>
-        {% for error in form.area.errors %}
-            <span class="error">{{ error }}</span>
-        {% endfor %}
-      </div>
-      <div class="form-group">
-        <label>{{ form.rooms.label }}</label>
-        {{ form.rooms(size=20, class_='form-control') }}
-        <small>Example: ???</small>
-        {% for error in form.rooms.errors %}
-            <span class="error">{{ error }}</span>
-        {% endfor %}
-      </div>
-      <div class="form-group">
-        <label>{{ form.parking.label }}</label>
-        {{ form.parking() }}
-      </div>
-      <div class="form-group">
-        <label>{{ form.warehouse.label }}</label>
-        {{ form.warehouse() }}
-      </div>
-      <div class="form-group">
-        <label>{{ form.elevator.label }}</label>
-        {{ form.elevator() }}
-      </div>
-      <div class="form-group">
-        <label>{{ form.address.label }}</label>
-        {{ form.address(size=30, class_='form-control') }}
-        {% for error in form.address.errors %}
-            <span class="error">{{ error }}</span>
-        {% endfor %}
-      </div>
-      <div class="form-group">
-        {{ form.submit(class_='btn btn-primary') }}
-      </div>
-    </form>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form
+        method="POST"
+        action="{{ url_for('user_input') }}"
+      >
+        {{ form.hidden_tag() }}
+
+        <!-- Area Input -->
+        <div class="mb-3">
+          <label for="area" class="form-label"
+            >Area (Square meters)</label
+          >
+          {{ form.area(class="form-control", id="area") }}
+          {% for error in form.area.errors %}
+          <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <!-- Rooms Input -->
+        <div class="mb-3">
+          <label for="rooms" class="form-label"
+            >Number of Rooms</label
+          >
+          {{ form.rooms(class="form-control", id="rooms") }}
+          {% for error in form.rooms.errors %}
+          <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="mb-3">The property has:</div>
+
+        <!-- Parking Checkbox -->
+        <div class="form-check mb-3">
+          {{ form.parking(class="form-check-input",
+          id="parking") }}
+          <label for="parking" class="form-check-label"
+            >Parking</label
+          >
+        </div>
+
+        <!-- Warehouse Checkbox -->
+        <div class="form-check mb-3">
+          {{ form.warehouse(class="form-check-input",
+          id="warehouse") }}
+          <label for="warehouse" class="form-check-label"
+            >Warehouse</label
+          >
+        </div>
+
+        <!-- Elevator Checkbox -->
+        <div class="form-check mb-3">
+          {{ form.elevator(class="form-check-input",
+          id="elevator") }}
+          <label for="elevator" class="form-check-label"
+            >Elevator</label
+          >
+        </div>
+
+        <!-- Address Input -->
+        <div class="mb-3">
+          <label for="address" class="form-label"
+            >Address</label
+          >
+          {{ form.address(class="form-control",
+          id="address") }} {% for error in
+          form.address.errors %}
+          <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+          {{ form.submit(class="btn btn-primary btn-lg") }}
+        </div>
+      </form>
+    </div>
   </div>
-{% endblock %}
 </div>
+{% endblock %}

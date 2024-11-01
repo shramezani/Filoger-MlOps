@@ -1,20 +1,14 @@
-{% extends 'base.html' %}
-{% block title %}
-  Prediction Result
-{% endblock %}
-
-{% block head %}
+{% extends 'base.html' %} {% block title %} Prediction
+Result {% endblock %} {% block head %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/result.css') }}"
 />
-{% endblock %}
-
-{% block content %}
-<div class="container">
+{% endblock %} {% block content %}
+<div class="container my-5 text-center">
   <div class="result-box">
     <h1>Prediction Result</h1>
-    <p>{{ predicted_price }}</p>
+    <p>{{ predicted_price }} $</p>
     <p>{{ explanation }}</p>
 
     <!-- Button to go back to input page -->
