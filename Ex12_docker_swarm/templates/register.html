@@ -95,7 +95,8 @@ endblock %} {% block head %}
               class="form-control", id="email",
               placeholder="Enter your email",
               aria_label="Email",
-              aria_describedby="email-addon", required=True
+              aria_describedby="email-addon", 
+              required=True
               ) }} {% if form.email.errors %} {% for error
               in form.email.errors %}
               <li class="text-danger">{{ error }}</li>
@@ -113,8 +114,9 @@ endblock %} {% block head %}
                 <i class="bi bi-lock-fill"></i>
               </span>
               {{ form.password( class="form-control",
-              id="password", placeholder="Create a
-              password", aria_label="Password",
+              id="password",
+              placeholder="Create a password", 
+              aria_label="Password",
               aria_describedby="password-addon",
               required=True ) }}
               <button
@@ -162,7 +164,8 @@ endblock %} {% block head %}
                 <i class="bi bi-lock-fill"></i>
               </span>
               {{ form.confirm_password(
-              class="form-control", id="confirm_password",
+              class="form-control", 
+              id="confirm_password",
               placeholder="Confirm your password",
               aria_label="Confirm Password",
               aria_describedby="confirm-password-addon",
