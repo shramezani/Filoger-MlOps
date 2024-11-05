@@ -206,6 +206,18 @@ endblock %} {% block head %}
             </div>
           </div>
 
+          {% with messages =
+          get_flashed_messages(with_categories=True) %} {%
+          if messages %}
+          <ul class="mb-3">
+            {% for category, message in messages %}
+            <li class="text-{{ category }}">
+              {{ message }}
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %} {% endwith %}
+
           <!-- Submit Button -->
           <div class="d-grid gap-2">
             <button
