@@ -76,7 +76,7 @@ endblock %} {% block head %}
               aria_describedby="username-addon" ) }} {% if
               form.username.errors %} {% for error in
               form.username.errors %}
-              <li class="error">{{ error }}</li>
+              <li class="text-danger">{{ error }}</li>
               {% endfor %} {% endif %}
             </div>
           </div>
