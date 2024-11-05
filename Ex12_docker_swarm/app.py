@@ -33,7 +33,6 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and user.check_password(form.password.data):
             session["user_id"] = user.id
-            flash("Logged in successfully!", "success")
             return redirect(url_for("home"))
         else:
             flash("Invalid username or password", "danger")
@@ -43,7 +42,6 @@ def login():
 @app.route("/logout")
 def logout():
     session.pop("user_id", None)
-    flash("You have been logged out.", "info")
     return redirect(url_for("home"))
 
 
@@ -63,7 +61,6 @@ def register():
             db.session.add(user)
             db.session.commit()
             session["user_id"] = user.id
-            flash("Your account has been created! You can now log in.", "success")
             return redirect(url_for("home"))
     elif request.method == "GET":
         return render_template("register.html", form=form)

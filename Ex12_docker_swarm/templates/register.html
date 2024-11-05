@@ -98,7 +98,7 @@ endblock %} {% block head %}
               aria_describedby="email-addon", required=True
               ) }} {% if form.email.errors %} {% for error
               in form.email.errors %}
-              <li class="error">{{ error }}</li>
+              <li class="text-danger">{{ error }}</li>
               {% endfor %} {% endif %}
             </div>
           </div>
@@ -126,7 +126,7 @@ endblock %} {% block head %}
               </button>
               {% if form.password.errors %} {% for error in
               form.password.errors %}
-              <li class="error">{{ error }}</li>
+              <li class="text-danger">{{ error }}</li>
               {% endfor %} {% endif %}
             </div>
             <div id="passwordHelp" class="form-text">
@@ -176,7 +176,7 @@ endblock %} {% block head %}
               </button>
               {% if form.confirm_password.errors %} {% for
               error in form.confirm_password.errors %}
-              <li class="error">{{ error }}</li>
+              <li class="text-danger">{{ error }}</li>
               {% endfor %} {% endif %}
             </div>
             <small
