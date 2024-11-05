@@ -1,130 +1,179 @@
-{% extends 'base.html' %} {% block title %} CancerAI - Home
-Page {% endblock %} {% block head %}
-<!-- Font Awesome for Icons -->
+{% extends 'base.html' %} {% block title %} HomePriceAI -
+Home Page {% endblock %} {% block head %}
+<!-- Stylesheet -->
 <link
   rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  href="{{url_for('static', filename='css/home.css')}}"
 />
-<!-- Stylesheet -->
-<link rel="stylesheet" href="/static/css/home.css" />
 {% endblock %} {% block content %}
-<section class="py-5">
+<!-- Hero Section -->
+<section class="bg-primary text-white text-center py-5">
   <div class="container">
-    <h2>Welcome to CancerAI</h2>
-    <p class="lead text-justify mb-4">
-      CancerAI leverages the power of artificial
-      intelligence to assist in early cancer detection,
-      providing a powerful tool to help healthcare
-      professionals in diagnosing cancer. By analyzing
-      medical imaging and clinical data, our AI algorithms
-      deliver insights that can improve the accuracy of
-      cancer detection and support medical decisions.
+    <h1>
+      Accurate Home Price Estimates at Your Fingertips
+    </h1>
+    <p class="lead">
+      Powered by AI, HomePriceAI brings you real-time home
+      price estimates with ease and precision.
     </p>
-    <section class="py-5 bg-light">
-      <div class="container px-5">
-        <h3>Why Choose CancerAI?</h3>
-        <p class="lead text-justify">
-          CancerAI provides cutting-edge technology designed
-          to improve cancer detection accuracy and support
-          medical professionals in making informed
-          decisions. Our platform uses advanced artificial
-          intelligence algorithms to analyze medical images,
-          clinical data, and patient history for early
-          detection and precise diagnoses.
-        </p>
+    <a
+      href="{{url_for('user_input')}}"
+      class="btn btn-lg btn-light mt-3"
+      >Get Your Estimate</a
+    >
+  </div>
+</section>
 
-        <div class="row py-4">
-          <div class="col-md-4">
-            <h5>AI-Powered Detection</h5>
-            <p class="text-justify pr-2">
-              Leveraging the power of deep learning and AI,
-              CancerAI analyzes thousands of images and data
-              points in seconds, helping to detect early
-              signs of cancer with unparalleled precision.
-            </p>
-          </div>
-          <div class="col-md-4">
-            <h5>Accurate and Reliable</h5>
-            <p class="text-justify pr-2">
-              Our AI models are trained on extensive
-              datasets, making them highly accurate and
-              dependable in detecting various forms of
-              cancer such as breast, lung, skin, and more.
-              You can trust CancerAI for consistent results.
-            </p>
-          </div>
-          <div class="col-md-4">
-            <h5>Enhancing Healthcare</h5>
-            <p class="text-justify pr-2">
-              CancerAI serves as a companion tool for
-              healthcare professionals, enhancing their
-              ability to diagnose and monitor patients,
-              ultimately improving outcomes and saving
-              lives.
-            </p>
-          </div>
+<!-- Features Section -->
+<section id="features" class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2>Why Choose HomePriceAI?</h2>
+      <p class="text-muted">
+        Our AI-driven platform offers unparalleled accuracy
+        and insights, built to help you make informed
+        decisions.
+      </p>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <div
+          class="card shadow-sm p-4 mb-4 bg-white rounded"
+        >
+          <h3 class="h5">AI-Powered Accuracy</h3>
+          <p>
+            Utilizing advanced AI models, we deliver home
+            price estimates with exceptional precision.
+          </p>
         </div>
       </div>
-    </section>
-
-    <section class="pt-5">
-      <div class="container">
-        <h3>How CancerAI Works</h3>
-        <p class="lead text-justify">
-          Our platform uses advanced AI models to process
-          medical imaging data and provide comprehensive
-          analysis. Here's how it works:
-        </p>
-
-        <ol class="list-group list-group-numbered">
-          <li class="list-group-item py-2">
-            <strong>Upload Medical Images:</strong> Users
-            (doctors or healthcare facilities) upload
-            X-rays, MRIs, or other medical imaging to our
-            secure platform.
-          </li>
-          <li class="list-group-item d-block py-3">
-            <strong>AI Analysis:</strong> The AI model
-            analyzes the uploaded images, looking for
-            potential abnormalities or early signs of cancer
-            that may be hard to detect with the naked eye.
-          </li>
-          <li class="list-group-item d-block py-3">
-            <strong>Report Generation:</strong> Within
-            minutes, CancerAI generates a detailed report
-            highlighting potential areas of concern, with a
-            confidence score indicating the likelihood of
-            cancer presence.
-          </li>
-          <li class="list-group-item d-block py-3">
-            <strong>Expert Review:</strong> Doctors can
-            review the AI-generated report alongside their
-            clinical expertise for a more informed diagnosis
-            and treatment plan.
-          </li>
-        </ol>
+      <div class="col-md-4">
+        <div
+          class="card shadow-sm p-4 mb-4 bg-white rounded"
+        >
+          <h3 class="h5">Real-Time Data</h3>
+          <p>
+            Get the most up-to-date price evaluations from a
+            continually refreshed data set.
+          </p>
+        </div>
       </div>
-    </section>
-
-    <section class="py-5">
-      <div class="container">
-        <h3>Get Started with CancerAI</h3>
-        <p class="lead">
-          Ready to see how CancerAI can improve cancer
-          detection and diagnosis? Sign up today to explore
-          our platform or contact us to learn more about how
-          we can support your healthcare needs.
-        </p>
-        <p class="container d-flex justify-content-center">
-          
-          <a
-            href="{{url_for('user_input') }}"
-            class="btn btn-outline-secondary mx-2"
-            >Get Started with Detection</a
-          >
-        </p>
+      <div class="col-md-4">
+        <div
+          class="card shadow-sm p-4 mb-4 bg-white rounded"
+        >
+          <h3 class="h5">Simple & User-Friendly</h3>
+          <p>
+            Our platform is designed to provide a seamless
+            experience, making it easy for anyone to use.
+          </p>
+        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2>How It Works</h2>
+      <p class="text-muted">
+        Three simple steps to getting your home price
+        estimate.
+      </p>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <div class="card shadow-sm p-4 mb-4 bg-primary text-white rounded">
+          <h4>Step 1: Enter Address</h4>
+          <p>
+            Type in the address of the property you want to
+            evaluate.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm p-4 mb-4 bg-primary text-white rounded">
+          <h4>Step 2: Adjust Parameters</h4>
+          <p>
+            Customize additional details to improve estimate
+            accuracy.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm p-4 mb-4 bg-primary text-white rounded">
+          <h4>Step 3: Get Your Estimate</h4>
+          <p>
+            Receive a comprehensive and accurate home price
+            evaluation in seconds.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2>What Our Users Say</h2>
+      <p class="text-muted">
+        Thousands of satisfied customers have found their
+        dream homes with HomePriceAI.
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <blockquote class="blockquote text-center">
+          <p>
+            "The accuracy and speed of HomePriceAI are
+            incredible! I found my dream home with
+            confidence."
+          </p>
+          <footer class="blockquote-footer">
+            Sarah J.
+          </footer>
+        </blockquote>
+      </div>
+      <div class="col-md-4">
+        <blockquote class="blockquote text-center">
+          <p>
+            "Highly recommended for anyone looking to buy or
+            sell a home. It saved me so much time and
+            effort!"
+          </p>
+          <footer class="blockquote-footer">Mark D.</footer>
+        </blockquote>
+      </div>
+      <div class="col-md-4">
+        <blockquote class="blockquote text-center">
+          <p>
+            "HomePriceAI made my search easy and gave me the
+            information I needed to make a solid decision."
+          </p>
+          <footer class="blockquote-footer">Lucy T.</footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 text-center bg-primary text-white">
+  <div class="container">
+    <h3>Ready to Discover Your Home’s True Value?</h3>
+    <p class="lead">
+      Start with HomePriceAI and get accurate, real-time
+      estimates in minutes!
+    </p>
+    <a
+      href="{{url_for('user_input')}}"
+      class="btn btn-lg btn-light"
+      >Try HomePriceAI Now</a
+    >
   </div>
 </section>
 {% endblock %}

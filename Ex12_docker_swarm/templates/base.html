@@ -16,48 +16,83 @@
       rel="stylesheet"
       href="{{url_for('static', filename='css/base_style.css')}}"
     />
+    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.svg')}}" type="image/x-icon">
     {% block head %}{% endblock %}
   </head>
   <body>
-    <header
-      class="container-fluid bg-dark text-white py-3"
-    >
-      <div
-        class="container"
-      >
-      <nav class="navbar navbar-expand-md navbar-dark">
-        <a class="navbar-brand h3 fs-3" href="/">CancerAI</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto fs-5">
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="{{url_for('user_input')}}">Cancer Detection</a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="{{url_for('profile')}}">Profile</a>
-            </li>
-            {% if session.get('user_id') %}
+    <header class="container-fluid bg-dark text-white py-3">
+      <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark">
+          <a class="navbar-brand h3 fs-3" href="/"
+            >HomePriceAI</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav ms-auto fs-5">
               <li class="nav-item mx-2">
-                <a class="btn btn-outline-secondary mx-2" href="{{url_for('logout')}}">Logout</a>
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a
+                  class="nav-link"
+                  href="{{url_for('user_input')}}"
+                  >Price Estimation</a
+                >
+              </li>
+              <li class="nav-item mx-2">
+                <a
+                  class="nav-link"
+                  href="{{url_for('profile')}}"
+                  >Profile</a
+                >
+              </li>
+              {% if session.get('user_id') %}
+              <li
+                class="nav-item d-flex align-items-center"
+              >
+                <a
+                  class="btn btn-outline-secondary mx-2"
+                  href="{{url_for('logout')}}"
+                  >Logout</a
+                >
               </li>
 
-            {% else %}
-              <li class="nav-item mx-2">
-                <a class="btn btn-outline-secondary mx-2" href="{{url_for('register')}}">Register</a>
+              {% else %}
+              <li
+                class="nav-item d-flex align-items-center"
+              >
+                <a
+                  class="btn btn-outline-secondary mx-2"
+                  href="{{url_for('register')}}"
+                  >Register</a
+                >
               </li>
-              <li class="nav-item mx-2">
-                <a class="btn btn-outline-secondary mx-2" href="{{url_for('login')}}">Login</a>
+              <li
+                class="nav-item d-flex align-items-center"
+              >
+                <a
+                  class="btn btn-outline-secondary mx-2"
+                  href="{{url_for('login')}}"
+                  >Login</a
+                >
               </li>
-            {% endif %}
-
-          </ul>
-        </div>
-      </nav>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
       </div>
     </header>
     <main>{% block content %}{% endblock %}</main>
@@ -66,7 +101,7 @@
     >
       <div class="container text-center">
         <p class="mb-0">
-          &copy; 2024 CancerAI. All Rights Reserved.
+          &copy; 2024 HomePriceAI. All Rights Reserved.
         </p>
       </div>
     </footer>
