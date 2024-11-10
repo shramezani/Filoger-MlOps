@@ -1,0 +1,28 @@
+
+# define docker compose version
+version : '3.8'
+
+# we have 1 services , because used SQLLite
+services:
+  web: 
+    deploy:
+      replicas: 1 # number of container copy
+    
+    build: . # build there in this directory
+    
+    container_name: "ex12" # build from this container
+    
+    ports:
+      - target: 5000  # map port 5000 from container 5000:
+        published: 5000 # to port 5000 in docker host 5000
+
+    volumes:
+      - ./instance:/app/instance  # Mount the instance directory for data persistence
+      - ./templates:/app/templates
+      - ./statics:/app/statics
+
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production 
+
+    restart: unless-stopped

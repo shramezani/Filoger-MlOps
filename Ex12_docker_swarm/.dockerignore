@@ -1,0 +1,20 @@
+# Exclude the virtual environment
+myvenv/
+
+# Exclude Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Exclude version control directories
+.git/
+.gitignore
+
+# Exclude Docker-related files if not needed inside the image
+Dockerfile
+.dockerignore
+
+# Exclude other unnecessary files
+*.md
+*.log
