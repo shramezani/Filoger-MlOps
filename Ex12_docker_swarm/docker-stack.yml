@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  web:
+    image: armanarabi/ex12:latest
+    
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1  
+        delay: 10s
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3  
+        window: 120s
+    ports:
+      - target: 5000
+        published: 5000
+    networks:
+      - app-network  
+    volumes:
+      - ./instance:/app/instance 
+      - ./templates:/app/templates
+      - ./statics:/app/statics
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+    
+
+networks:
+  app-network:
+    driver: overlay
+
+volumes:
+  app-data:
+    external: false
